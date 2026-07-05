@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>환스랩 · HwansLab</title>
+<meta name="description" content="환스랩(HwansLab)은 오래 곁에 두고 매일 다시 펼칠 수 있는 앱을 만드는 스튜디오입니다. 지속의 가치를 믿습니다." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet" />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<style>
+  :root{
+    --paper:#F6F3EA;
+    --paper-card:#FBF9F2;
+    --ink:#1B2233;
+    --ink-soft:#565C6C;
+    --ink-faint:#8A8E9B;
+    --seal:#B23A2E;
+    --seal-deep:#8C2A22;
+    --line:#E5DECD;
+    --line-soft:#EFEADD;
+    --coral:#E59A8E;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .myung{font-family:"Song Myung",serif;font-weight:400;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- header ---------- */
+  .site-head{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,243,234,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);}
+  .seal{
+    width:34px;height:34px;border-radius:7px;background:var(--seal);
+    display:grid;place-items:center;color:#FBF3EC;
+    font-family:"Song Myung",serif;font-size:20px;transform:rotate(-4deg);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.18), 0 1px 0 rgba(0,0,0,.12);
+  }
+  .brand-name{font-size:18px;font-weight:700;letter-spacing:-.01em;}
+  .brand-name small{display:block;font-size:11px;font-weight:500;letter-spacing:.16em;color:var(--ink-faint);}
+  .head-link{
+    text-decoration:none;color:var(--ink-soft);font-size:14px;font-weight:600;
+    padding:8px 14px;border:1px solid var(--line);border-radius:999px;
+    transition:border-color .2s,color .2s;
+  }
+  .head-link:hover{border-color:var(--seal);color:var(--seal);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:96px 0 84px;text-align:center;}
+  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--seal);font-weight:700;margin-bottom:40px;}
+  .quote-frame{position:relative;display:inline-block;padding:0 14px;}
+  .bracket{font-family:"Song Myung",serif;color:var(--seal);opacity:.42;position:absolute;font-size:clamp(48px,11vw,108px);line-height:1;user-select:none;}
+  .bracket.open{top:-26px;left:-34px;}
+  .bracket.close{bottom:-58px;right:-34px;}
+  .quote{font-size:clamp(30px,6.2vw,56px);line-height:1.42;letter-spacing:-.01em;color:var(--ink);}
+  .attr{margin-top:34px;font-size:15px;color:var(--ink-faint);letter-spacing:.04em;}
+  .attr::before{content:"";display:inline-block;width:26px;height:1px;background:var(--line);vertical-align:middle;margin-right:12px;}
+  .lead{margin:56px auto 0;max-width:540px;font-size:17px;color:var(--ink-soft);}
+  .lead b{color:var(--ink);font-weight:700;}
+  .stores{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px;}
+  .store-btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:14px;font-weight:600;padding:12px 20px;border-radius:11px;background:var(--ink);color:var(--paper);transition:transform .15s,background .2s;}
+  .store-btn:hover{transform:translateY(-2px);background:#10151f;}
+  .store-btn .ic{font-size:16px;line-height:1;}
+
+  /* ---------- section base ---------- */
+  section{padding:80px 0;}
+  .sec-label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--seal);font-weight:700;margin-bottom:14px;}
+  .sec-title{font-size:clamp(24px,4vw,32px);letter-spacing:-.01em;margin-bottom:18px;}
+  .divider{height:1px;background:var(--line-soft);}
+
+  /* ---------- belief (philosophy) ---------- */
+  .belief{background:var(--ink);color:var(--paper);text-align:center;padding:104px 0;}
+  .belief .sec-label{color:var(--coral);}
+  .belief-frame{position:relative;display:inline-block;padding:0 26px;margin:6px 0 30px;}
+  .belief-frame .bk{font-family:"Song Myung",serif;color:var(--coral);opacity:.6;position:absolute;font-size:clamp(40px,8vw,80px);line-height:1;}
+  .belief-frame .bk.l{left:-20px;top:-30px;}
+  .belief-frame .bk.r{right:-20px;bottom:-50px;}
+  .belief h2{font-family:"Song Myung",serif;font-size:clamp(38px,8vw,72px);letter-spacing:.02em;line-height:1.2;}
+  .belief p{max-width:520px;margin:0 auto;font-size:16.5px;color:#C8CCD8;}
+  .belief p+p{margin-top:18px;}
+
+  /* ---------- app section ---------- */
+  .app-intro{max-width:600px;font-size:16px;color:var(--ink-soft);}
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px;}
+  .feat{background:var(--paper-card);border:1px solid var(--line);border-radius:14px;padding:26px 22px;transition:transform .18s, box-shadow .18s;}
+  .feat:hover{transform:translateY(-3px);box-shadow:0 10px 30px -16px rgba(27,34,51,.3);}
+  .feat .num{font-family:"Song Myung",serif;font-size:15px;color:var(--seal);letter-spacing:.1em;}
+  .feat h3{font-size:18px;margin:10px 0 8px;letter-spacing:-.01em;}
+  .feat p{font-size:14.5px;color:var(--ink-soft);}
+
+  /* ---------- business info ---------- */
+  .biz{background:var(--paper-card);border:1px solid var(--line);border-radius:20px;padding:46px 44px;}
+  .biz-grid{display:grid;grid-template-columns:160px 1fr;margin-top:24px;}
+  .biz-grid dt{padding:16px 0;font-size:13px;letter-spacing:.04em;color:var(--ink-faint);border-top:1px solid var(--line-soft);}
+  .biz-grid dd{padding:16px 0;font-size:16px;font-weight:600;color:var(--ink);border-top:1px solid var(--line-soft);word-break:break-all;}
+  .biz-grid dd a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
+  .biz-grid dd a:hover{border-color:var(--seal);color:var(--seal);}
+
+  /* ---------- footer ---------- */
+  .site-foot{background:var(--ink);color:#9AA0B0;padding:44px 0;}
+  .site-foot .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-brand{display:flex;align-items:center;gap:11px;color:var(--paper);font-weight:700;}
+  .foot-brand .seal{width:28px;height:28px;font-size:16px;border-radius:6px;}
+  .foot-meta{font-size:13px;line-height:1.8;text-align:right;}
+  .foot-meta a{color:#C3C8D4;text-decoration:none;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (max-width:640px){
+    .hero{padding:64px 0 56px;}
+    .bracket.open{left:-18px;top:-14px;}
+    .bracket.close{right:-18px;bottom:-40px;}
+    .belief{padding:72px 0;}
+    .features{grid-template-columns:1fr;}
+    .biz{padding:34px 26px;}
+    .biz-grid{grid-template-columns:1fr;}
+    .biz-grid dt{padding:14px 0 4px;}
+    .biz-grid dd{padding:0 0 14px;border-top:none;}
+    .site-foot .wrap{flex-direction:column;align-items:flex-start;}
+    .foot-meta{text-align:left;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="seal">환</span>
+      <span class="brand-name">환스랩<small>HWANSLAB</small></span>
+    </a>
+    <a class="head-link" href="mailto:hwan@hwansLab.com">문의하기</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow reveal">환스랩 · HwansLab</p>
+      <div class="quote-frame reveal">
+        <span class="bracket open" aria-hidden="true">『</span>
+        <p class="quote myung">배우고 때때로 익히면<br />또한 기쁘지 아니한가</p>
+        <span class="bracket close" aria-hidden="true">』</span>
+      </div>
+      <p class="attr reveal myung">논어</p>
+
+      <p class="lead reveal">
+        <b>환스랩</b>은 오래 곁에 두고 매일 다시 펼칠 수 있는 앱을 만듭니다.
+        그 시작은 한 문장의 지혜를 모으는 <b>명언수첩</b>입니다.
+      </p>
+      <div class="stores reveal">
+        <a class="store-btn" href="#" aria-label="App Store에서 보기"><span class="ic"></span> App Store</a>
+        <a class="store-btn" href="#" aria-label="Google Play에서 보기"><span class="ic">▶</span> Google Play</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELIEF -->
+  <section class="belief">
+    <div class="wrap">
+      <p class="sec-label reveal">환스랩이 믿는 것</p>
+      <div class="belief-frame reveal">
+        <span class="bk l" aria-hidden="true">『</span>
+        <h2>지속의 가치</h2>
+        <span class="bk r" aria-hidden="true">』</span>
+      </div>
+      <p class="reveal">한 번의 감탄은 쉽게 잊힙니다. 환스랩은 오래 머무는 쓸모를 믿습니다.</p>
+      <p class="reveal">하루 한 문장이 쌓여 한 사람의 생각이 되듯, 작더라도 매일 이어갈 수 있는 것 — 그 꾸준함이 만드는 변화를 위해 앱을 만듭니다. 앞으로 더해질 앱들도 이 한 가지를 향합니다.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- APP -->
+  <section>
+    <div class="wrap">
+      <p class="sec-label reveal">명언수첩</p>
+      <h2 class="sec-title myung reveal">한 문장이 하루를 바꾼다</h2>
+      <p class="app-intro reveal">
+        역사 속 인물 130여 명의 명언을, 그들이 살아온 이야기와 함께 모았습니다.
+        주제별로 정리된 문장을 골라 읽고, 마음에 닿은 명언을 나만의 수첩에 담아 두세요.
+      </p>
+
+      <div class="features">
+        <div class="feat reveal">
+          <span class="num myung">壹</span>
+          <h3>명언과 생애</h3>
+          <p>130여 명의 인물을, 그 사람의 삶과 나란히 읽습니다.</p>
+        </div>
+        <div class="feat reveal">
+          <span class="num myung">貳</span>
+          <h3>카테고리 탐색</h3>
+          <p>주제별로 정리된 문장 가운데 오늘의 한 줄을 고릅니다.</p>
+        </div>
+        <div class="feat reveal">
+          <span class="num myung">參</span>
+          <h3>나만의 수첩</h3>
+          <p>마음에 닿은 명언을 모아 두고 다시 펼쳐 봅니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BUSINESS INFO -->
+  <section id="business">
+    <div class="wrap">
+      <p class="sec-label reveal">사업자 정보</p>
+      <h2 class="sec-title myung reveal">환스랩</h2>
+      <div class="biz reveal">
+        <dl class="biz-grid">
+          <dt>상호</dt><dd>지승환 (환스랩)</dd>
+          <dt>사업자등록번호</dt><dd>636-45-01191</dd>
+          <dt>이메일</dt><dd><a href="mailto:hwan@hwansLab.com">hwan@hwansLab.com</a></dd>
+          <dt>서비스</dt><dd>모바일 애플리케이션 개발 · 명언수첩 (iOS · Android)</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-brand">
+      <span class="seal">환</span> 환스랩
+    </div>
+    <div class="foot-meta">
+      상호 지승환(환스랩) · 사업자등록번호 636-45-01191<br />
+      <a href="mailto:hwan@hwansLab.com">hwan@hwansLab.com</a> &nbsp;·&nbsp; © 2026 HwansLab
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in');});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:.12});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
+
+</body>
+</html>
